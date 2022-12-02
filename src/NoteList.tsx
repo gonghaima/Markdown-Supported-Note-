@@ -5,13 +5,14 @@ import ReactSelect from 'react-select';
 import { Tag } from './App';
 
 type NoteListProp = {
-    availableTags: Tag[];
+  availableTags: Tag[];
 };
 export default function NoteList({ availableTags }: NoteListProp) {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+  const [title, setTitle] = useState<string>('');
   return (
     <>
-      <Row>
+      <Row className="align-items-center mb-4">
         <Col>
           <h1>Notes</h1>
         </Col>
@@ -29,7 +30,11 @@ export default function NoteList({ availableTags }: NoteListProp) {
           <Col>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
             </Form.Group>
           </Col>
           <Col>
